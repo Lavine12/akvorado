@@ -28,3 +28,47 @@ quality. Be sure to always read the
 [changelog](console/data/docs/99-changelog.md) before upgrading.
 
 A [Grafana plugin](https://github.com/ovh/grafana-akvorado) is available.
+
+## Installation
+
+There are three ways to install **Akvorado**:
+
+1. **Docker** (recommended for a quick start)
+
+   Ensure Docker and Docker Compose are installed and run:
+
+   ```console
+   mkdir akvorado
+   cd akvorado
+   curl -sL https://github.com/akvorado/akvorado/releases/latest/download/docker-compose-quickstart.tar.gz | tar zxvf -
+   docker compose up -d
+   ```
+
+   When `akvorado-console` is reported as *healthy* by `docker compose ps`, the
+   web interface is available on port 8081.
+
+2. **Pre-built binary**
+
+   Download the archive from the [release page](https://github.com/akvorado/akvorado/releases) and
+   extract it:
+
+   ```console
+   curl -L -o akvorado.tar.gz https://github.com/akvorado/akvorado/releases/latest/download/akvorado-linux-amd64.tar.gz
+   tar xzf akvorado.tar.gz
+   ./akvorado --help
+   ```
+
+3. **Build from source**
+
+   Install [Go](https://go.dev/doc/install) 1.24+ and [NodeJS](https://nodejs.org/) 20+ with NPM.
+   Then clone the repository and run `make`:
+
+   ```console
+   git clone https://github.com/akvorado/akvorado.git
+   cd akvorado
+   make
+   ```
+
+Kafka and ClickHouse need to be available in all cases. Refer to the
+[documentation](docs/01-install.md) for additional details and configuration
+options.
